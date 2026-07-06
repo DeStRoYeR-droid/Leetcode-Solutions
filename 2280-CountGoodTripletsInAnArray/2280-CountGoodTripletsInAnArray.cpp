@@ -1,0 +1,29 @@
+// Last updated: 06/07/2026, 18:58:11
+#include <ext/pb_ds/assoc_container.hpp>
+class Solution {
+public:
+    long long goodTriplets(vector<int>& nums1, vector<int>& nums2) {
+        unordered_map<int, int> mp;
+
+        for (int i = 0; i < nums1.size(); ++i) 
+            mp[nums1[i]] = i;
+
+        __gnu_pbds::tree<int, 
+                __gnu_pbds::null_type, 
+                less<int>, 
+                __gnu_pbds::rb_tree_tag,  
+                __gnu_pbds::tree_order_statistics_node_update> st;
+                
+        long long total = 0, n = nums2.size();
+
+        for (int i = 0; i < n; ++i){
+            int idx = mp[nums2[i]];
+            int left = st.order_of_key(idx);
+            int right = (n - 1 - idx) - (st.size() - left);
+            total += (long long) left * right;
+            st.insert(idx);
+        }
+
+        return total;
+    }
+};
