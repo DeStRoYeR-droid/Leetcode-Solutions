@@ -1,0 +1,130 @@
+# 3692. Majority Frequency Characters
+
+**Difficulty:** Easy  
+[View on LeetCode](https://leetcode.com/problems/majority-frequency-characters/)
+
+---
+
+You are given a string `s` consisting of lowercase English letters.
+
+The **frequency group** for a value `k` is the set of characters that appear exactly `k` times in s.
+
+The **majority frequency group** is the frequency group that contains the largest number of **distinct** characters.
+
+Return a string containing all characters in the majority frequency group, in **any** order. If two or more frequency groups tie for that largest size, pick the group whose frequency `k` is **larger**.
+
+**Example 1:**
+
+**Input:** s = "aaabbbccdddde"
+
+**Output:** "ab"
+
+**Explanation:**
+
+<table style="border: 1px solid black;">
+	<thead>
+		<tr>
+			<th style="border: 1px solid black;">Frequency (k)</th>
+			<th style="border: 1px solid black;">Distinct characters in group</th>
+			<th style="border: 1px solid black;">Group size</th>
+			<th style="border: 1px solid black;">Majority?</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td style="border: 1px solid black;">4</td>
+			<td style="border: 1px solid black;">{d}</td>
+			<td style="border: 1px solid black;">1</td>
+			<td style="border: 1px solid black;">No</td>
+		</tr>
+		<tr>
+			<td style="border: 1px solid black;">3</td>
+			<td style="border: 1px solid black;">{a, b}</td>
+			<td style="border: 1px solid black;">2</td>
+			<td style="border: 1px solid black;"><strong>Yes</strong></td>
+		</tr>
+		<tr>
+			<td style="border: 1px solid black;">2</td>
+			<td style="border: 1px solid black;">{c}</td>
+			<td style="border: 1px solid black;">1</td>
+			<td style="border: 1px solid black;">No</td>
+		</tr>
+		<tr>
+			<td style="border: 1px solid black;">1</td>
+			<td style="border: 1px solid black;">{e}</td>
+			<td style="border: 1px solid black;">1</td>
+			<td style="border: 1px solid black;">No</td>
+		</tr>
+	</tbody>
+</table>
+
+Both characters `'a'` and `'b'` share the same frequency 3, they are in the majority frequency group. `"ba"` is also a valid answer.
+
+**Example 2:**
+
+**Input:** s = "abcd"
+
+**Output:** "abcd"
+
+**Explanation:**
+
+<table style="border: 1px solid black;">
+	<thead>
+		<tr>
+			<th style="border: 1px solid black;">Frequency (k)</th>
+			<th style="border: 1px solid black;">Distinct characters in group</th>
+			<th style="border: 1px solid black;">Group size</th>
+			<th style="border: 1px solid black;">Majority?</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td style="border: 1px solid black;">1</td>
+			<td style="border: 1px solid black;">{a, b, c, d}</td>
+			<td style="border: 1px solid black;">4</td>
+			<td style="border: 1px solid black;"><strong>Yes</strong></td>
+		</tr>
+	</tbody>
+</table>
+
+All characters share the same frequency 1, they are all in the majority frequency group.
+
+**Example 3:**
+
+**Input:** s = "pfpfgi"
+
+**Output:** "fp"
+
+**Explanation:**
+
+<table style="border: 1px solid black;">
+	<thead>
+		<tr>
+			<th style="border: 1px solid black;">Frequency (k)</th>
+			<th style="border: 1px solid black;">Distinct characters in group</th>
+			<th style="border: 1px solid black;">Group size</th>
+			<th style="border: 1px solid black;">Majority?</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td style="border: 1px solid black;">2</td>
+			<td style="border: 1px solid black;">{p, f}</td>
+			<td style="border: 1px solid black;">2</td>
+			<td style="border: 1px solid black;"><strong>Yes</strong></td>
+		</tr>
+		<tr>
+			<td style="border: 1px solid black;">1</td>
+			<td style="border: 1px solid black;">{g, i}</td>
+			<td style="border: 1px solid black;">2</td>
+			<td style="border: 1px solid black;">No (tied size, lower frequency)</td>
+		</tr>
+	</tbody>
+</table>
+
+Both characters `'p'` and `'f'` share the same frequency 2, they are in the majority frequency group. There is a tie in group size with frequency 1, but we pick the higher frequency: 2.
+
+**Constraints:**
+
+- `1 <= s.length <= 100`
+- `s` consists only of lowercase English letters.
