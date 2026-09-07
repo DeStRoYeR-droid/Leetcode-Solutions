@@ -1,0 +1,17 @@
+// Last updated: 07/09/2026, 22:26:05
+class Solution {
+public:
+    long long removeZeros(long long n) {
+        long long result = 0;
+        int digits = 0;
+        while (n){
+            int digit = n % 10;
+            if (digit){
+                result = digit * pow(10, digits) + result;
+                ++digits;
+            }
+            n /= 10;
+        }
+        return result;
+    }
+};
